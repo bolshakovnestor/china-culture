@@ -320,3 +320,19 @@ footer a{color:var(--gold)}
 .lb figcaption a{color:var(--gold)}
 .lb button{position:absolute;top:14px;right:18px;background:none;border:0;color:#fff;font-size:40px;line-height:1}
 @media(max-width:600px){.tiles{grid-template-columns:1fr 1fr}.tile .im{height:96px}}
+
+/* mobile: no horizontal overflow */
+html,body{max-width:100%;overflow-x:hidden}
+.search{min-width:0;width:100%}
+@media(max-width:640px){
+  .dtools .search,.dtools select{flex:1 1 100%;width:100%}
+  .dtools .chip{flex:1}
+  .vtable,.vtable tbody{display:block;width:100%}
+  .vtable tr{display:grid;grid-template-columns:1fr auto;grid-template-areas:"z s" "p s" "u s";column-gap:10px;padding:10px 14px;border-bottom:1px solid var(--line)}
+  .vtable tr:last-child{border-bottom:0}
+  .vtable td{display:block;padding:0;border:0;min-width:0}
+  .vtable .vz{grid-area:z;white-space:normal;overflow-wrap:anywhere;font-size:24px}
+  .vtable .vp{grid-area:p}
+  .vtable td:nth-child(3){grid-area:u;overflow-wrap:anywhere}
+  .vtable .vs{grid-area:s;align-self:center;display:flex;flex-direction:column;align-items:center;gap:2px}
+}
