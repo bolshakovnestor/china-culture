@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>华夏 · Довідник китайської культури</title>
+<meta name="description" content="Інтерактивний навчальний довідник з китайської культури: теми, мапа провінцій, лексика з піньїнем, вікторини.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23b8232f'/%3E%3Ctext x='32' y='46' font-size='40' text-anchor='middle' fill='white' font-family='serif'%3E中%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Ma+Shan+Zheng&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#/"><span class="seal">华</span><span><b>华夏 · Huáxià</b><small>ДОВІДНИК КИТАЙСЬКОЇ КУЛЬТУРИ</small></span></a>
+    <nav class="main" id="nav">
+      <a href="#/" data-r="home"><span class="hz">家</span>Головна</a>
+      <a href="#/topics" data-r="topics"><span class="hz">文</span>Теми</a>
+      <a href="#/map" data-r="map"><span class="hz">图</span>Мапа</a>
+      <a href="#/dict" data-r="dict"><span class="hz">词</span>Словник</a>
+      <a href="#/quiz" data-r="quiz"><span class="hz">考</span>Тести</a>
+    </nav>
+  </div>
+</header>
+<main id="app"></main>
+<div class="tip" id="tip"></div>
+<footer>
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <div><b style="color:#fff;font-family:var(--serif)">华夏 · Довідник китайської культури</b><br>Навчальний проєкт для студентів-китаєзнавців. Матеріали перевірено за джерелами, вказаними в кожній темі.</div>
+      <div>Мапа: дані Apache ECharts (Apache-2.0). Фото: Wikipedia / Wikimedia Commons.<br>Озвучення — вбудований синтезатор мовлення браузера.</div>
+    </div>
+  </div>
+</footer>
+<script src="js/map-paths.js"></script>
+<script src="js/data-provinces.js"></script>
+<script src="js/data-topics-1.js"></script>
+<script src="js/data-topics-2.js"></script>
+<script src="js/data-images.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
