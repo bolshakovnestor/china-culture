@@ -60,7 +60,7 @@ function toast(msg){
 }
 
 /* ---------- wiki images ---------- */
-const imgCache = store.get("img2", {});
+const imgCache = store.get("img3", {});
 const WIKI = window.WIKI || {};
 async function wikiImg(article, lang){
   const key = lang+":"+article;
@@ -72,13 +72,15 @@ async function wikiImg(article, lang){
     let res = null;
     if(j.thumbnail && j.thumbnail.source){
       const ow = (j.originalimage && j.originalimage.width) || 0;
-      let src = j.thumbnail.source;
-      if(/\/\d+px-/.test(src) && ow > 1100) src = src.replace(/\/\d+px-/, "/1100px-");
-      else if(j.originalimage) src = j.originalimage.source;
+      const thumb = j.thumbnail.source;
+      let src = thumb;
+      // Wikimedia віддає лише стандартні розміри мініатюр (…, 330, 500, 960, 1280 …)
+      if(/\/\d+px-/.test(thumb) && ow > 960) src = thumb.replace(/\/\d+px-/, "/960px-");
+      else if(j.originalimage && ow <= 960) src = j.originalimage.source;
       const page = (j.content_urls && j.content_urls.desktop && j.content_urls.desktop.page) || `https://${lang}.wikipedia.org/wiki/${encodeURIComponent(article)}`;
-      res = {src, page};
+      res = {src, thumb, page};
     }
-    imgCache[key] = res; store.set("img2", imgCache);
+    imgCache[key] = res; store.set("img3", imgCache);
     return res;
   }catch(e){ return null; }
 }
@@ -94,7 +96,7 @@ function loadPhotos(root){
       el.dataset.full = res.src; el.dataset.page = res.page;
       const c = el.parentElement && el.parentElement.querySelector(":scope > .credit");
       if(c) c.innerHTML = `Фото: <a href="${res.page}" target="_blank" rel="noopener">Wikipedia / Wikimedia Commons</a>`; };
-    im.onerror = ()=> el.classList.add("noimg");
+    im.onerror = ()=>{ if(res.thumb && im.src !== res.thumb){ res.src = res.thumb; im.src = res.thumb; } else el.classList.add("noimg"); };
     im.src = res.src;
   });
 }
